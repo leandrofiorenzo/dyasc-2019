@@ -23,4 +23,11 @@ public class SucesionDeFibonacci {
         return sucesion;
     }
 
+    public String FormatearSucesion(int[] sucesion) {
+        String sucesionFormateada = "fibo<" + sucesion.length + ">:";
+        for (int i = 0; i < sucesion.length; i++) {
+            sucesionFormateada += " " + sucesion[i];
+        }
+        return sucesionFormateada;
+    }
 }
