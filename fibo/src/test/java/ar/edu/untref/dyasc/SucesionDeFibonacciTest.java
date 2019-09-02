@@ -35,7 +35,7 @@ public class SucesionDeFibonacciTest {
         SucesionDeFibonacci sucesionDeFibonacci = new SucesionDeFibonacci();
         FormateadorSucesionDeFibonacci formateadorSucesionDeFibonacci = new FormateadorSucesionDeFibonacci();
         String expectedValue = formateadorSucesionDeFibonacci.formatearSucesion(sucesionDeFibonacci.obtenerPrimerosNNumeros(8));
-        assertEquals("fibo<8>: 0 1 1 2 3 5 8 13", expectedValue);
+        assertEquals("fibo<8>: 0 1 1 2 3 5 8 14", expectedValue);
     }
 
 }
