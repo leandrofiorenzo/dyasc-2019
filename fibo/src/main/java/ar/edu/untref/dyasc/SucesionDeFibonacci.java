@@ -2,7 +2,7 @@ package ar.edu.untref.dyasc;
 
 public class SucesionDeFibonacci {
 
-    public int[] ObtenerPrimerosN(int n) {
+    public int[] obtenerPrimerosNNumeros(int n) {
         int primero = 0;
         int siguiente = 1;
         int[] sucesion = new int[n];
@@ -21,13 +21,5 @@ public class SucesionDeFibonacci {
             }
         }
         return sucesion;
-    }
-
-    public String FormatearSucesion(int[] sucesion) {
-        String sucesionFormateada = "fibo<" + sucesion.length + ">:";
-        for (int i = 0; i < sucesion.length; i++) {
-            sucesionFormateada += " " + sucesion[i];
-        }
-        return sucesionFormateada;
     }
 }

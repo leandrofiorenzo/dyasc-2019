@@ -11,7 +11,8 @@ public class Program {
 
         int n = Integer.parseInt(args[0]);
         SucesionDeFibonacci sucesionDeFibonacci = new SucesionDeFibonacci();
-        System.out.println(sucesionDeFibonacci.FormatearSucesion(sucesionDeFibonacci.ObtenerPrimerosN(n)));
+        FormateadorSucesionDeFibonacci formateadorSucesionDeFibonacci = new FormateadorSucesionDeFibonacci();
+        System.out.println(formateadorSucesionDeFibonacci.formatearSucesion(sucesionDeFibonacci.obtenerPrimerosNNumeros(n)));
 
     }
 }
