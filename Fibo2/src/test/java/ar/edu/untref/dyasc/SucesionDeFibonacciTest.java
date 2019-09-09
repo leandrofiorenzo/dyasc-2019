@@ -9,7 +9,7 @@ public class SucesionDeFibonacciTest {
     {
         SucesionDeFibonacci sucesionDeFibonacci = new SucesionDeFibonacci();
         int[] expectedValue = { 0, 1, 1, 2, 3 };
-        assertArrayEquals(sucesionDeFibonacci.obtenerPrimerosNNumeros(5), expectedValue);
+        assertArrayEquals(sucesionDeFibonacci.obtenerSucesion(5), expectedValue);
     }
 
     @Test
@@ -17,25 +17,23 @@ public class SucesionDeFibonacciTest {
     {
         SucesionDeFibonacci sucesionDeFibonacci = new SucesionDeFibonacci();
         int[] expectedValue = { 0, 1, 1, 2, 3, 5, 8, 13 };
-        assertArrayEquals(sucesionDeFibonacci.obtenerPrimerosNNumeros(8), expectedValue);
+        assertArrayEquals(sucesionDeFibonacci.obtenerSucesion(8), expectedValue);
     }
 
     @Test
-    public void testDevuelveLaSucesion5FormateadaCorrectamente()
+    public void testDevuelveLaSucesion5InversaCorrectamente()
     {
         SucesionDeFibonacci sucesionDeFibonacci = new SucesionDeFibonacci();
-        FormateadorSucesionDeFibonacci formateadorSucesionDeFibonacci = new FormateadorSucesionDeFibonacci();
-        String expectedValue = formateadorSucesionDeFibonacci.formatearSucesion(sucesionDeFibonacci.obtenerPrimerosNNumeros(5));
-        assertEquals("fibo<5>: 0 1 1 2 3", expectedValue);
+        int[] expectedValue = { 3, 2, 1, 1, 0 };
+        assertArrayEquals(sucesionDeFibonacci.obtenerSucesion(5, false), expectedValue);
     }
 
     @Test
-    public void testDevuelveLaSucesion8FormateadaCorrectamente()
+    public void testDevuelveLaSucesion8InversaCorrectamente()
     {
         SucesionDeFibonacci sucesionDeFibonacci = new SucesionDeFibonacci();
-        FormateadorSucesionDeFibonacci formateadorSucesionDeFibonacci = new FormateadorSucesionDeFibonacci();
-        String expectedValue = formateadorSucesionDeFibonacci.formatearSucesion(sucesionDeFibonacci.obtenerPrimerosNNumeros(8));
-        assertEquals("fibo<8>: 0 1 1 2 3 5 8 13", expectedValue);
+        int[] expectedValue = { 13, 8, 5, 3, 2, 1, 1, 0 };
+        assertArrayEquals(sucesionDeFibonacci.obtenerSucesion(8, false), expectedValue);
     }
 
 }

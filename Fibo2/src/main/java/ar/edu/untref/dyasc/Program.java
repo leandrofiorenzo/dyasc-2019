@@ -3,16 +3,13 @@ package ar.edu.untref.dyasc;
 public class Program {
 
     public static void main(String[] args) {
-
-        if(args.length == 0) {
-           System.out.println("Debe especificarse la cantidad de números de la sucesión.");
-           return;
-        }
-
-        int n = Integer.parseInt(args[0]);
+        GeneradorDeArgumentos generadorDeArgumentos = new GeneradorDeArgumentos(args);
+        if(!generadorDeArgumentos.sonArgumentosValidos())
+            return;
         SucesionDeFibonacci sucesionDeFibonacci = new SucesionDeFibonacci();
         FormateadorSucesionDeFibonacci formateadorSucesionDeFibonacci = new FormateadorSucesionDeFibonacci();
-        System.out.println(formateadorSucesionDeFibonacci.formatearSucesion(sucesionDeFibonacci.obtenerPrimerosNNumeros(n)));
-
+        int[] sucesion = sucesionDeFibonacci.obtenerSucesion(generadorDeArgumentos.getCantidadDeNumeros(), generadorDeArgumentos.esFormatoDirecto());
+        String sucesionFormateada = formateadorSucesionDeFibonacci.formatearSucesion(sucesion, generadorDeArgumentos.esFormatoHorizontal());
+        System.out.println(sucesionFormateada);
     }
 }
