@@ -4,15 +4,15 @@ public class SucesionDeFibonacci {
 
     /**
      * Devuelve hasta el n-esimo número de la sucesion de fibonacci.
-     * @param n n-esimo número de la sucesion hasta el que se quiere obtener.
+     * @param cantidadDeNumeros cantidad de números de la sucesion, que se quieren obtener.
      * @return Devuelve hasta el n-esimo número de la sucesion de fibonacci.
      */
-    public int[] obtenerSucesion(int n) {
+    public int[] obtenerSucesion(int cantidadDeNumeros) {
         int primero = 0;
         int siguiente = 1;
-        int[] sucesion = new int[n];
+        int[] sucesion = new int[cantidadDeNumeros];
 
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < cantidadDeNumeros; i++)
         {
             if(i == 0) {
                 sucesion[i] = primero;
@@ -30,12 +30,12 @@ public class SucesionDeFibonacci {
 
     /**
      * Devuelve hasta el n-esimo número de la sucesion de fibonacci.
-     * @param n n-esimo número de la sucesion hasta el que se quiere obtener.
+     * @param cantidadDeNumeros cantidad de números de la sucesion, que se quieren obtener
      * @param enDirecto si se dese obtener la sucesion en formato directo.
      * @return Devuelve hasta el n-esimo número de la sucesion de fibonacci.
      */
-    public int[] obtenerSucesion(int n, boolean enDirecto) {
-        int[] sucesion = obtenerSucesion(n);
+    public int[] obtenerSucesion(int cantidadDeNumeros, boolean enDirecto) {
+        int[] sucesion = obtenerSucesion(cantidadDeNumeros);
         if(enDirecto) return sucesion;
 
         for(int i = 0; i < sucesion.length / 2; i++)

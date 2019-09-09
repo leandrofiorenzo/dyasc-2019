@@ -4,8 +4,11 @@ public class Program {
 
     public static void main(String[] args) {
         GeneradorDeArgumentos generadorDeArgumentos = new GeneradorDeArgumentos(args);
-        if(!generadorDeArgumentos.sonArgumentosValidos())
+        if(!generadorDeArgumentos.sonArgumentosValidos()) {
+            System.out.println(generadorDeArgumentos.getMensajeDeValidacion());
             return;
+        }
+
         SucesionDeFibonacci sucesionDeFibonacci = new SucesionDeFibonacci();
         FormateadorSucesionDeFibonacci formateadorSucesionDeFibonacci = new FormateadorSucesionDeFibonacci();
         int[] sucesion = sucesionDeFibonacci.obtenerSucesion(generadorDeArgumentos.getCantidadDeNumeros(), generadorDeArgumentos.esFormatoDirecto());

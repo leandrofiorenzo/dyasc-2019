@@ -5,7 +5,9 @@ public class GeneradorDeArgumentos {
     private int cantidadDeNumeros;
     private boolean esFormatoHorizontal;
     private boolean esFormatoDirecto;
+
     private boolean sonArgumentosValidos;
+    private String mensajeDeValidacion;
 
     public GeneradorDeArgumentos(String[] args) {
         this.esFormatoHorizontal = true;
@@ -14,7 +16,7 @@ public class GeneradorDeArgumentos {
         if(args.length == 2) {
             char[] argsFormato = args[0].toCharArray();
             if(argsFormato.length != 5) {
-                System.out.println("Opción no válida");
+                this.mensajeDeValidacion = "Opción no válida";
                 this.sonArgumentosValidos = false;
                 return;
             }
@@ -23,13 +25,13 @@ public class GeneradorDeArgumentos {
             char parametroDirectoOInverso = argsFormato[4];
 
             if(parametroHorizontalOVertical != 'h' && parametroHorizontalOVertical != 'v'){
-                System.out.println("Opción no válida");
+                this.mensajeDeValidacion = "Opción no válida";
                 this.sonArgumentosValidos = false;
                 return;
             }
 
             if(parametroDirectoOInverso != 'd' && parametroDirectoOInverso != 'i'){
-                System.out.println("Opción no válida");
+                this.mensajeDeValidacion = "Opción no válida";
                 this.sonArgumentosValidos = false;
                 return;
             }
@@ -40,7 +42,7 @@ public class GeneradorDeArgumentos {
         } else if(args.length == 1) {
             this.cantidadDeNumeros = Integer.parseInt(args[0]);
         } else {
-            System.out.println("No se puede ejecutar el programa sin argumentos:");
+            this.mensajeDeValidacion = "No se puede ejecutar el programa sin argumentos";
             this.sonArgumentosValidos = false;
             return;
         }
@@ -61,4 +63,6 @@ public class GeneradorDeArgumentos {
     public boolean sonArgumentosValidos () {
         return  this.sonArgumentosValidos;
     }
+
+    public String getMensajeDeValidacion () { return this.mensajeDeValidacion; }
 }

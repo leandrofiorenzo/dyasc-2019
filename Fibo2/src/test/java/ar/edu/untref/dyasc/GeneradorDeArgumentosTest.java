@@ -2,46 +2,50 @@ package ar.edu.untref.dyasc;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class GeneradorDeArgumentosTest {
 
-    //-o=vd 5
-
     @Test
-    public void testDevuelveLaSucesion5FormateadaCorrectamente()
+    public void testGeneraLosArgumentosVerticalDirecto5()
     {
-        SucesionDeFibonacci sucesionDeFibonacci = new SucesionDeFibonacci();
-        FormateadorSucesionDeFibonacci formateadorSucesionDeFibonacci = new FormateadorSucesionDeFibonacci();
-        String expectedValue = formateadorSucesionDeFibonacci.formatearSucesion(sucesionDeFibonacci.obtenerSucesion(5));
-        assertEquals("fibo<5>: 0 1 1 2 3", expectedValue);
+        String[] args = { "-o=vd" , "5" };
+        GeneradorDeArgumentos generadorDeArgumentos = new GeneradorDeArgumentos(args);
+        assertFalse(generadorDeArgumentos.esFormatoHorizontal());
+        assertTrue(generadorDeArgumentos.esFormatoDirecto());
+        assertEquals(generadorDeArgumentos.getCantidadDeNumeros(), 5);
+        assertTrue(generadorDeArgumentos.sonArgumentosValidos());
     }
 
     @Test
-    public void testDevuelveLaSucesion8FormateadaCorrectamente()
+    public void testGeneraLosArgumentosHorizontalInverso8()
     {
-        SucesionDeFibonacci sucesionDeFibonacci = new SucesionDeFibonacci();
-        FormateadorSucesionDeFibonacci formateadorSucesionDeFibonacci = new FormateadorSucesionDeFibonacci();
-        String expectedValue = formateadorSucesionDeFibonacci.formatearSucesion(sucesionDeFibonacci.obtenerSucesion(8));
-        assertEquals("fibo<8>: 0 1 1 2 3 5 8 13", expectedValue);
+        String[] args = { "-o=hi" , "8" };
+        GeneradorDeArgumentos generadorDeArgumentos = new GeneradorDeArgumentos(args);
+        assertTrue(generadorDeArgumentos.esFormatoHorizontal());
+        assertFalse(generadorDeArgumentos.esFormatoDirecto());
+        assertEquals(generadorDeArgumentos.getCantidadDeNumeros(), 8);
+        assertTrue(generadorDeArgumentos.sonArgumentosValidos());
     }
 
     @Test
-    public void testDevuelveLaSucesion5FormateadaHorizontalCorrectamente()
+    public void testLosArgumentosSonInvalidos()
     {
-        SucesionDeFibonacci sucesionDeFibonacci = new SucesionDeFibonacci();
-        FormateadorSucesionDeFibonacci formateadorSucesionDeFibonacci = new FormateadorSucesionDeFibonacci();
-        String expectedValue = formateadorSucesionDeFibonacci.formatearSucesion(sucesionDeFibonacci.obtenerSucesion(5), true);
-        assertEquals("fibo<5>: 0 1 1 2 3", expectedValue);
+        String[] args = { "-o=xy" , "8" };
+        GeneradorDeArgumentos generadorDeArgumentos = new GeneradorDeArgumentos(args);
+        assertFalse(generadorDeArgumentos.sonArgumentosValidos());
+        assertEquals(generadorDeArgumentos.getMensajeDeValidacion(), "Opción no válida");
     }
 
     @Test
-    public void testDevuelveLaSucesion8FormateadaHorizontalCorrectamente()
+    public void testGeneraLosArgumentosHorizontalDirecto8SinEspecificarOrientacion()
     {
-        SucesionDeFibonacci sucesionDeFibonacci = new SucesionDeFibonacci();
-        FormateadorSucesionDeFibonacci formateadorSucesionDeFibonacci = new FormateadorSucesionDeFibonacci();
-        String expectedValue = formateadorSucesionDeFibonacci.formatearSucesion(sucesionDeFibonacci.obtenerSucesion(8), true);
-        assertEquals("fibo<8>: 0 1 1 2 3 5 8 13", expectedValue);
+        String[] args = { "8" };
+        GeneradorDeArgumentos generadorDeArgumentos = new GeneradorDeArgumentos(args);
+        assertTrue(generadorDeArgumentos.esFormatoHorizontal());
+        assertTrue(generadorDeArgumentos.esFormatoDirecto());
+        assertEquals(generadorDeArgumentos.getCantidadDeNumeros(), 8);
+        assertTrue(generadorDeArgumentos.sonArgumentosValidos());
     }
 
     @Test
