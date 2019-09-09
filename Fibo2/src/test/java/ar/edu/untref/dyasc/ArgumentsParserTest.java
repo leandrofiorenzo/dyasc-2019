@@ -4,48 +4,48 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class GeneradorDeArgumentosTest {
+public class ArgumentsParserTest {
 
     @Test
     public void testGeneraLosArgumentosVerticalDirecto5()
     {
         String[] args = { "-o=vd" , "5" };
-        GeneradorDeArgumentos generadorDeArgumentos = new GeneradorDeArgumentos(args);
-        assertFalse(generadorDeArgumentos.esFormatoHorizontal());
-        assertTrue(generadorDeArgumentos.esFormatoDirecto());
-        assertEquals(generadorDeArgumentos.getCantidadDeNumeros(), 5);
-        assertTrue(generadorDeArgumentos.sonArgumentosValidos());
+        ArgumentsParser argumentsParser = new ArgumentsParser(args);
+        assertFalse(argumentsParser.esFormatoHorizontal());
+        assertTrue(argumentsParser.esFormatoDirecto());
+        assertEquals(argumentsParser.getCantidadDeNumeros(), 5);
+        assertTrue(argumentsParser.sonArgumentosValidos());
     }
 
     @Test
     public void testGeneraLosArgumentosHorizontalInverso8()
     {
         String[] args = { "-o=hi" , "8" };
-        GeneradorDeArgumentos generadorDeArgumentos = new GeneradorDeArgumentos(args);
-        assertTrue(generadorDeArgumentos.esFormatoHorizontal());
-        assertFalse(generadorDeArgumentos.esFormatoDirecto());
-        assertEquals(generadorDeArgumentos.getCantidadDeNumeros(), 8);
-        assertTrue(generadorDeArgumentos.sonArgumentosValidos());
+        ArgumentsParser argumentsParser = new ArgumentsParser(args);
+        assertTrue(argumentsParser.esFormatoHorizontal());
+        assertFalse(argumentsParser.esFormatoDirecto());
+        assertEquals(argumentsParser.getCantidadDeNumeros(), 8);
+        assertTrue(argumentsParser.sonArgumentosValidos());
     }
 
     @Test
     public void testLosArgumentosSonInvalidos()
     {
         String[] args = { "-o=xy" , "8" };
-        GeneradorDeArgumentos generadorDeArgumentos = new GeneradorDeArgumentos(args);
-        assertFalse(generadorDeArgumentos.sonArgumentosValidos());
-        assertEquals(generadorDeArgumentos.getMensajeDeValidacion(), "Opción no válida");
+        ArgumentsParser argumentsParser = new ArgumentsParser(args);
+        assertFalse(argumentsParser.sonArgumentosValidos());
+        assertEquals(argumentsParser.getMensajeDeValidacion(), "Opción no válida");
     }
 
     @Test
     public void testGeneraLosArgumentosHorizontalDirecto8SinEspecificarOrientacion()
     {
         String[] args = { "8" };
-        GeneradorDeArgumentos generadorDeArgumentos = new GeneradorDeArgumentos(args);
-        assertTrue(generadorDeArgumentos.esFormatoHorizontal());
-        assertTrue(generadorDeArgumentos.esFormatoDirecto());
-        assertEquals(generadorDeArgumentos.getCantidadDeNumeros(), 8);
-        assertTrue(generadorDeArgumentos.sonArgumentosValidos());
+        ArgumentsParser argumentsParser = new ArgumentsParser(args);
+        assertTrue(argumentsParser.esFormatoHorizontal());
+        assertTrue(argumentsParser.esFormatoDirecto());
+        assertEquals(argumentsParser.getCantidadDeNumeros(), 8);
+        assertTrue(argumentsParser.sonArgumentosValidos());
     }
 
     @Test

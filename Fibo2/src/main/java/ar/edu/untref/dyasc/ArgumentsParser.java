@@ -1,6 +1,6 @@
 package ar.edu.untref.dyasc;
 
-public class GeneradorDeArgumentos {
+public class ArgumentsParser {
 
     private int cantidadDeNumeros;
     private boolean esFormatoHorizontal;
@@ -9,7 +9,7 @@ public class GeneradorDeArgumentos {
     private boolean sonArgumentosValidos;
     private String mensajeDeValidacion;
 
-    public GeneradorDeArgumentos(String[] args) {
+    public ArgumentsParser(String[] args) {
         this.esFormatoHorizontal = true;
         this.esFormatoDirecto = true;
         this.sonArgumentosValidos = true;
