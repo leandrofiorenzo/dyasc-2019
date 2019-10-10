@@ -13,7 +13,7 @@ public class SucesionDeFibonacciFormateadorTest {
         SucesionDeFibonacci sucesionDeFibonacci = new SucesionDeFibonacci();
         SucesionDeFibonacciFormateador sucesionDeFibonacciFormateador = new SucesionDeFibonacciFormateador();
         sucesionDeFibonacciFormateador.definirStrategyDeOrientacion(new OrientacionHorizontalStrategy());
-        String expectedValue = sucesionDeFibonacciFormateador.formatearSucesionDeFibonacci(sucesionDeFibonacci.obtenerSucesionDeFibonacci(5));
+        String expectedValue = sucesionDeFibonacciFormateador.formatearSucesionDeFibonacci(5, sucesionDeFibonacci.obtenerSucesionDeFibonacci(5));
         assertEquals("fibo<5>: 0 1 1 2 3", expectedValue);
     }
 
@@ -23,7 +23,7 @@ public class SucesionDeFibonacciFormateadorTest {
         SucesionDeFibonacci sucesionDeFibonacci = new SucesionDeFibonacci();
         SucesionDeFibonacciFormateador sucesionDeFibonacciFormateador = new SucesionDeFibonacciFormateador();
         sucesionDeFibonacciFormateador.definirStrategyDeOrientacion(new OrientacionHorizontalStrategy());
-        String expectedValue = sucesionDeFibonacciFormateador.formatearSucesionDeFibonacci(sucesionDeFibonacci.obtenerSucesionDeFibonacci(8));
+        String expectedValue = sucesionDeFibonacciFormateador.formatearSucesionDeFibonacci(5, sucesionDeFibonacci.obtenerSucesionDeFibonacci(8));
         assertEquals("fibo<8>: 0 1 1 2 3 5 8 13", expectedValue);
     }
 
@@ -33,7 +33,7 @@ public class SucesionDeFibonacciFormateadorTest {
         SucesionDeFibonacci sucesionDeFibonacci = new SucesionDeFibonacci();
         SucesionDeFibonacciFormateador sucesionDeFibonacciFormateador = new SucesionDeFibonacciFormateador();
         sucesionDeFibonacciFormateador.definirStrategyDeOrientacion(new OrientacionVerticalStrategy());
-        String expectedValue = sucesionDeFibonacciFormateador.formatearSucesionDeFibonacci(sucesionDeFibonacci.obtenerSucesionDeFibonacci(5));
+        String expectedValue = sucesionDeFibonacciFormateador.formatearSucesionDeFibonacci(5, sucesionDeFibonacci.obtenerSucesionDeFibonacci(5));
         assertEquals("fibo<5>:\n0\n1\n1\n2\n3", expectedValue);
     }
 
@@ -43,7 +43,7 @@ public class SucesionDeFibonacciFormateadorTest {
         SucesionDeFibonacci sucesionDeFibonacci = new SucesionDeFibonacci();
         SucesionDeFibonacciFormateador sucesionDeFibonacciFormateador = new SucesionDeFibonacciFormateador();
         sucesionDeFibonacciFormateador.definirStrategyDeOrientacion(new OrientacionVerticalStrategy());
-        String expectedValue = sucesionDeFibonacciFormateador.formatearSucesionDeFibonacci(sucesionDeFibonacci.obtenerSucesionDeFibonacci(8));
+        String expectedValue = sucesionDeFibonacciFormateador.formatearSucesionDeFibonacci(5, sucesionDeFibonacci.obtenerSucesionDeFibonacci(8));
         assertEquals("fibo<8>:\n0\n1\n1\n2\n3\n5\n8\n13", expectedValue);
     }
 
@@ -52,7 +52,7 @@ public class SucesionDeFibonacciFormateadorTest {
     {
         SucesionDeFibonacci sucesionDeFibonacci = new SucesionDeFibonacci();
         SucesionDeFibonacciFormateador sucesionDeFibonacciFormateador = new SucesionDeFibonacciFormateador();
-        String expectedValue = sucesionDeFibonacciFormateador.formatearSucesionDeFibonacci(sucesionDeFibonacci.obtenerSucesionDeFibonacci(5));
+        String expectedValue = sucesionDeFibonacciFormateador.formatearSucesionDeFibonacci(5, sucesionDeFibonacci.obtenerSucesionDeFibonacci(5));
         assertEquals("fibo<5>: 0 1 1 2 3", expectedValue);
     }
 

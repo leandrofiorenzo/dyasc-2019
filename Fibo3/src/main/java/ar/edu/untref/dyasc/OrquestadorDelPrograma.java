@@ -21,7 +21,7 @@ public class OrquestadorDelPrograma {
         sucesionDeFibonacci = modoDeFuncionamiento.convertirSucesionDeFibonacci(sucesionDeFibonacci);
 
         sucesionDeFibonacciFormateador.definirStrategyDeOrientacion(obtenerStrategyDeOrientacion());
-        String sucesionDeFibonacciFormateada = sucesionDeFibonacciFormateador.formatearSucesionDeFibonacci(sucesionDeFibonacci);
+        String sucesionDeFibonacciFormateada = sucesionDeFibonacciFormateador.formatearSucesionDeFibonacci(argumentosDelPrograma.obtenerLongitudDeLaSucesion(), sucesionDeFibonacci);
 
         generadorDeArchivos.generarArchivoDeSalida(sucesionDeFibonacciFormateada, argumentosDelPrograma.obtenerArchivoDeSalida());
 
