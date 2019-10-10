@@ -103,7 +103,7 @@ public class OrquestadorDelProgramaTest {
         assertEquals("fibo<5>: 0 1 1 2 3\n", outContent.toString());
     }
 
-    /*@Test
+    @Test
     public void testOrquestaElProgramaDeSucesion5EnModoDeFuncionamientoSumatoria()
     {
         String[] args = { "5", "-m=s" };
@@ -114,7 +114,7 @@ public class OrquestadorDelProgramaTest {
         orquestadorDelPrograma.ejecutarPrograma();
 
         assertEquals("fibo<5>: 7\n", outContent.toString());
-    }*/
+    }
 
     @Test
     public void testOrquestaElProgramaDeSucesion5ConArchivoDeSalida()
