@@ -63,11 +63,7 @@ Y sus correspondientes implementaciones:
 + ModoDeFuncionamientoListaStrategy
 + ModoDeFuncionamientoSumaStrategy
 
-Cada uno de ellos se encarga de hacer su tarea en base a los argumentos pasados al programa
-
-Hay una clase que se encarga de coordinar la ejecución llamada OrquestadorDelPrograma
-
-Dicha clase es la que decide que Strategy se va a inyectar
+Cada uno de ellos se encarga de hacer su tarea en base a los argumentos pasados al programa. Hay una clase que se encarga de coordinar la ejecución llamada OrquestadorDelPrograma. Dicha clase es la que decide que Strategy se va a inyectar.
 
 
 
