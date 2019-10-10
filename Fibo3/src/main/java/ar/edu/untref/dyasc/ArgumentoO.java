@@ -2,8 +2,8 @@ package ar.edu.untref.dyasc;
 
 public class ArgumentoO {
     private final String INDICADOR_ARGUMENTO = "-o=";
-    private OrientacionEnum orientacion;
-    private DireccionEnum direccion;
+    private OrientacionEnum orientacion = OrientacionEnum.Horizontal;
+    private DireccionEnum direccion = DireccionEnum.Directa;
 
     public void inicializarArgumento(String[] args) {
         for(int i = 0; i < args.length; i++) {

@@ -3,25 +3,56 @@ package ar.edu.untref.dyasc;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
-public class OrquestadorDelPrograma implements IDireccionStrategy {
+public class OrquestadorDelPrograma {
 
-    private IDireccionStrategy direccionStrategy;
-    private IOrientacionStrategy orientacionStrategy;
+    private SucesionDeFibonnaci sucesionDeFibonnaci = new SucesionDeFibonnaci();
+    private SucesionDeFibonnaciFormateador sucesionDeFibonnaciFormateador = new SucesionDeFibonnaciFormateador();
+    private GeneradorDeArchivos generadorDeArchivos = new GeneradorDeArchivos();
+    private GeneradorDelMensajeEnPantalla generadorDelMensajeEnPantalla = new GeneradorDelMensajeEnPantalla();
+    private ReglasDeFuncionamiento reglasDeFuncionamiento = new ReglasDeFuncionamiento();
+    private ArgumentosDelPrograma argumentosDelPrograma ;
 
-    public void definirStrategyDeDireccion(IDireccionStrategy sucesionDeFibonacciStrategy) {
-        this.direccionStrategy = sucesionDeFibonacciStrategy;
+    public OrquestadorDelPrograma(ArgumentosDelPrograma argumentosDelPrograma) {
+        this.argumentosDelPrograma = argumentosDelPrograma;
     }
 
-    public void definirStrategyDeOrientacion(IOrientacionStrategy formateoStrategy) {
-        this.orientacionStrategy = formateoStrategy;
+    public void ejecutarPrograma() {
+        sucesionDeFibonnaci.definirStrategyDeDireccion(obtenerStrategyDeDireccion());
+        int[] sucesionDeFibonacci = sucesionDeFibonnaci.obtenerSucesionDeFibonacci(argumentosDelPrograma.obtenerLongitudDeLaSucesion());
+
+        reglasDeFuncionamiento.definirModoDeFuncionamiento(argumentosDelPrograma.obtenerModoDeFuncionamiento());
+        sucesionDeFibonacci = reglasDeFuncionamiento.ejecutarReglasDeFuncionamientoSobreLaSucesionDeFibonacci(sucesionDeFibonacci);
+
+        sucesionDeFibonnaciFormateador.definirStrategyDeOrientacion(obtenerStrategyDeOrientacion());
+        String sucesionDeFibonacciFormateada = sucesionDeFibonnaciFormateador.formatearSucesionDeFibonacci(sucesionDeFibonacci);
+
+        generadorDeArchivos.generarArchivoConContenido(sucesionDeFibonacciFormateada, argumentosDelPrograma.obtenerArchivoDeSalida());
+
+        String mensajeEnPantalla = generadorDelMensajeEnPantalla.generarMensajeParaImprimirEnPantalla(argumentosDelPrograma.obtenerLongitudDeLaSucesion(), argumentosDelPrograma.obtenerArchivoDeSalida(), sucesionDeFibonacciFormateada);
+        System.out.println(mensajeEnPantalla);
+
     }
 
-    public int[] obtenerSucesionDeFibonacci(int longitudDeLaSucesion) {
-        return direccionStrategy.obtenerSucesionDeFibonacci(longitudDeLaSucesion);
+    private IDireccionStrategy obtenerStrategyDeDireccion() {
+        switch (argumentosDelPrograma.obtenerDireccion()) {
+            case Directa:
+                return new DireccionDirectaStrategy();
+            case Inversa:
+                return new DireccionInversaStrategy();
+            default:
+                return null; //error;
+        }
     }
 
-    public String formatearSucesionDeFibonacci(int[] sucesionDeFibonacci) {
-        return orientacionStrategy.formatearSucesionDeFibonacci(sucesionDeFibonacci);
+    private IOrientacionStrategy obtenerStrategyDeOrientacion() {
+        switch (argumentosDelPrograma.obtenerOrientacion()) {
+            case Horizontal:
+                return new OrientacionHorizontalStrategy();
+            case Vertical:
+                return new OrientacionVerticalStrategy();
+            default:
+                return null; //error;
+        }
     }
 
 

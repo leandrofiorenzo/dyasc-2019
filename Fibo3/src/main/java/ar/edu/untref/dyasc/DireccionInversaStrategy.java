@@ -1,25 +1,24 @@
 package ar.edu.untref.dyasc;
 
-public class DireccionInversaStrategy implements IDireccionStrategy {
+import java.util.*;
 
+public class DireccionInversaStrategy extends DireccionDirectaStrategy implements IDireccionStrategy {
+
+    @Override
     public int[] obtenerSucesionDeFibonacci (int longitudDeLaSucesion) {
-        int[] sucesionDeFibonacci = new int[longitudDeLaSucesion];
-        int primero = 0;
-        int siguiente = 1;
-        for (int i = 0; i < longitudDeLaSucesion; i++)
+        int[] sucesionDeFibonacci = super.obtenerSucesionDeFibonacci(longitudDeLaSucesion);
+        int[] sucesionDeFibonacciInvertida = invertirArray(sucesionDeFibonacci);
+        return sucesionDeFibonacciInvertida;
+
+    }
+
+    private int[] invertirArray (int[] array) {
+        for(int i = 0; i < array.length / 2; i++)
         {
-            if(i == 0) {
-                sucesionDeFibonacci[i] = primero;
-            } else if(i == 1) {
-                sucesionDeFibonacci[1] = siguiente;
-            } else {
-                int suma = primero + siguiente;
-                primero = siguiente;
-                siguiente = suma;
-                sucesionDeFibonacci[i] = siguiente;
-            }
+            int temp = array[i];
+            array[i] = array[array.length - i - 1];
+            array[array.length - i - 1] = temp;
         }
-        return new int[] {1,2,3,5,6,7,8,9,0,0};
-        //return sucesionDeFibonacci;
+        return array;
     }
 }

@@ -7,7 +7,12 @@ public class ArgumentosDelPrograma {
     private ArgumentoM argumentoM = new ArgumentoM();
 
     public ArgumentosDelPrograma(String[] args) {
-        this.longitudDeLaSucesion = Integer.parseInt(args[args.length - 1]);
+        //La longitud de la sucesión es un parametro indispensable para el funcionamiento del programa.
+        //Los demás son opcionales.
+
+        for(int i = 0; i < args.length; i++) {
+            if (isInteger(args[i])) this.longitudDeLaSucesion = Integer.parseInt(args[i]);
+        }
     }
 
     public void inicializarArgumentos(String[] args) {
@@ -24,25 +29,27 @@ public class ArgumentosDelPrograma {
         return argumentoF.obtenerArchivoDeSalida();
     }
 
-    public IDireccionStrategy obtenerStrategyDeDireccion() {
-        switch (argumentoO.obtenerDireccion()) {
-            case Directa:
-                return new DireccionDirectaStrategy();
-            case Inversa:
-                return new DireccionInversaStrategy();
-            default:
-                return null; //error;
-        }
+    public DireccionEnum obtenerDireccion () {
+        return argumentoO.obtenerDireccion();
     }
 
-    public IOrientacionStrategy obtenerStrategyDeOrientacion() {
-        switch (argumentoO.obtenerOrientacion()) {
-            case Horizontal:
-                return new OrientacionHorizontalStrategy();
-            case Vertical:
-                return new OrientacionVerticalStrategy();
-            default:
-                return null; //error;
-        }
+    public OrientacionEnum obtenerOrientacion () {
+        return argumentoO.obtenerOrientacion();
     }
+
+    public ModoDeFuncionamientoEnum obtenerModoDeFuncionamiento () {
+        return argumentoM.obtenerModoDeFuncionamiento();
+    }
+
+    private boolean isInteger(String s) {
+        try {
+            Integer.parseInt(s);
+        } catch (NumberFormatException e) {
+            return false;
+        } catch(NullPointerException e) {
+            return false;
+        }
+        return true;
+    }
+
 }
