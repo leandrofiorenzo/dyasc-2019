@@ -1,8 +1,8 @@
 package ar.edu.untref.dyasc;
 
-public class SucesionDeFibonnaci {
+public class SucesionDeFibonacci {
 
-    private IDireccionStrategy direccionStrategy;
+    private IDireccionStrategy direccionStrategy = new DireccionDirectaStrategy();
 
     public int[] obtenerSucesionDeFibonacci(int longitudDeLaSucesion) {
         return direccionStrategy.obtenerSucesionDeFibonacci(longitudDeLaSucesion);

@@ -1,21 +1,26 @@
 package ar.edu.untref.dyasc;
 
 public class ArgumentosDelPrograma {
+
+    private String[] args;
     private int longitudDeLaSucesion;
     private ArgumentoF argumentoF = new ArgumentoF();
     private ArgumentoO argumentoO = new ArgumentoO();
     private ArgumentoM argumentoM = new ArgumentoM();
 
     public ArgumentosDelPrograma(String[] args) {
-        //La longitud de la sucesión es un parametro indispensable para el funcionamiento del programa.
-        //Los demás son opcionales.
+        this.args = args;
 
+        //La longitud de la sucesión es un parametro indispensable para el funcionamiento del mismo. Los demás son opcionales.
         for(int i = 0; i < args.length; i++) {
-            if (isInteger(args[i])) this.longitudDeLaSucesion = Integer.parseInt(args[i]);
+            if (isInteger(args[i])) {
+                this.longitudDeLaSucesion = Integer.parseInt(args[i]);
+                break;
+            }
         }
     }
 
-    public void inicializarArgumentos(String[] args) {
+    public void inicializarArgumentos() {
         argumentoF.inicializarArgumento(args);
         argumentoO.inicializarArgumento(args);
         argumentoM.inicializarArgumento(args);

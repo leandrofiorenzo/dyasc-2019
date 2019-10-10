@@ -1,15 +1,12 @@
 package ar.edu.untref.dyasc;
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-
 public class OrquestadorDelPrograma {
 
-    private SucesionDeFibonnaci sucesionDeFibonnaci = new SucesionDeFibonnaci();
-    private SucesionDeFibonnaciFormateador sucesionDeFibonnaciFormateador = new SucesionDeFibonnaciFormateador();
+    private SucesionDeFibonacci sucesionDeFibonacci = new SucesionDeFibonacci();
+    private SucesionDeFibonacciFormateador sucesionDeFibonacciFormateador = new SucesionDeFibonacciFormateador();
     private GeneradorDeArchivos generadorDeArchivos = new GeneradorDeArchivos();
     private GeneradorDelMensajeEnPantalla generadorDelMensajeEnPantalla = new GeneradorDelMensajeEnPantalla();
-    private ReglasDeFuncionamiento reglasDeFuncionamiento = new ReglasDeFuncionamiento();
+    private ModoDeFuncionamiento modoDeFuncionamiento = new ModoDeFuncionamiento();
     private ArgumentosDelPrograma argumentosDelPrograma ;
 
     public OrquestadorDelPrograma(ArgumentosDelPrograma argumentosDelPrograma) {
@@ -17,20 +14,19 @@ public class OrquestadorDelPrograma {
     }
 
     public void ejecutarPrograma() {
-        sucesionDeFibonnaci.definirStrategyDeDireccion(obtenerStrategyDeDireccion());
-        int[] sucesionDeFibonacci = sucesionDeFibonnaci.obtenerSucesionDeFibonacci(argumentosDelPrograma.obtenerLongitudDeLaSucesion());
+        sucesionDeFibonacci.definirStrategyDeDireccion(obtenerStrategyDeDireccion());
+        int[] sucesionDeFibonacci = this.sucesionDeFibonacci.obtenerSucesionDeFibonacci(argumentosDelPrograma.obtenerLongitudDeLaSucesion());
 
-        reglasDeFuncionamiento.definirModoDeFuncionamiento(argumentosDelPrograma.obtenerModoDeFuncionamiento());
-        sucesionDeFibonacci = reglasDeFuncionamiento.ejecutarReglasDeFuncionamientoSobreLaSucesionDeFibonacci(sucesionDeFibonacci);
+        modoDeFuncionamiento.definirStrategyModoDeFuncionamiento(obtenerStrategyDeModoDeFuncionamiento());
+        sucesionDeFibonacci = modoDeFuncionamiento.convertirSucesionDeFibonacci(sucesionDeFibonacci);
 
-        sucesionDeFibonnaciFormateador.definirStrategyDeOrientacion(obtenerStrategyDeOrientacion());
-        String sucesionDeFibonacciFormateada = sucesionDeFibonnaciFormateador.formatearSucesionDeFibonacci(sucesionDeFibonacci);
+        sucesionDeFibonacciFormateador.definirStrategyDeOrientacion(obtenerStrategyDeOrientacion());
+        String sucesionDeFibonacciFormateada = sucesionDeFibonacciFormateador.formatearSucesionDeFibonacci(sucesionDeFibonacci);
 
-        generadorDeArchivos.generarArchivoConContenido(sucesionDeFibonacciFormateada, argumentosDelPrograma.obtenerArchivoDeSalida());
+        generadorDeArchivos.generarArchivoDeSalida(sucesionDeFibonacciFormateada, argumentosDelPrograma.obtenerArchivoDeSalida());
 
         String mensajeEnPantalla = generadorDelMensajeEnPantalla.generarMensajeParaImprimirEnPantalla(argumentosDelPrograma.obtenerLongitudDeLaSucesion(), argumentosDelPrograma.obtenerArchivoDeSalida(), sucesionDeFibonacciFormateada);
         System.out.println(mensajeEnPantalla);
-
     }
 
     private IDireccionStrategy obtenerStrategyDeDireccion() {
@@ -40,7 +36,7 @@ public class OrquestadorDelPrograma {
             case Inversa:
                 return new DireccionInversaStrategy();
             default:
-                return null; //error;
+                return null;
         }
     }
 
@@ -51,16 +47,18 @@ public class OrquestadorDelPrograma {
             case Vertical:
                 return new OrientacionVerticalStrategy();
             default:
-                return null; //error;
+                return null;
         }
     }
 
-
-    public void guardarEnArchivo(String mensaje, String rutaArchivo) {
-        try (PrintWriter out = new PrintWriter(rutaArchivo)) {
-            out.println(mensaje);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+    private IModoDeFuncionamientoStrategy obtenerStrategyDeModoDeFuncionamiento() {
+        switch (argumentosDelPrograma.obtenerModoDeFuncionamiento()) {
+            case Lista:
+                return new ModoDeFuncionamientoListaStrategy();
+            case Sumatoria:
+                return new ModoDeFuncionamientoSumatoriaStrategy();
+            default:
+                return null;
         }
     }
 }
