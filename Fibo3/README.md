@@ -9,7 +9,7 @@
 ### Ejecutar.
 + java -jar fibo.jar n -opts
 
-### opts:
+#### opts:
 -f=x ('x' define el archivo donde se va a guardar el resultado de la ejecución)
 -o=xy 
     ('x' define la orientación del resultadoo. Puede ser 'v' (vertical) o 'h' (horizontal))
@@ -20,7 +20,7 @@
 ##### 1)
 java -jar fibo.jar -o=vd -m=l 5
 
-resultado: 
+<u>resultado:</u>   
 fibo<5>: 
 0 
 1 
@@ -31,13 +31,13 @@ fibo<5>:
 ##### 2)
 java -jar fibo.jar -o=vd -m=s 5
 
-resultado: 
+<u>resultado:</u>   
 fibo<5>: 7
 
 ##### 3)
 java -jar fibo.jar -f=prueba.txt -o=vd -m=s 8
 
-resultado: 
+<u>resultado:</u>   
 fibo<8> guardado en prueba.txt
 
 ## Decisiones de diseño
