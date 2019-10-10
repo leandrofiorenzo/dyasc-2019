@@ -12,9 +12,11 @@
 #### opts:
 -f=x   
 + ('x' define el archivo donde se va a guardar el resultado de la ejecución)  
+
 -o=xy      
 + ('x' define la orientación del resultadoo. Puede ser 'v' (vertical) o 'h' (horizontal))    
 + ('y' define la direccion del resultado. Puede ser 'd' (directa) o 'i' (inversa))    
+
 -m=x    
 + ('x' define el modo de funcionamiento del programa. Puede ser 'l' (lista) o 's' (sumatoria))     
 
