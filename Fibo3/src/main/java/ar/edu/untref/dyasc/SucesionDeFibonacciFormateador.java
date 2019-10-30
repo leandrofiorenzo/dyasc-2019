@@ -8,8 +8,8 @@ public class SucesionDeFibonacciFormateador {
         this.orientacionStrategy = orientacionStrategy;
     }
 
-    public String formatearSucesionDeFibonacci(int[] sucesionDeFibonacci) {
-        return orientacionStrategy.formatearSucesionDeFibonacci(sucesionDeFibonacci);
+    public String formatearSucesionDeFibonacci(int longitudDeLaSucesion, int[] sucesionDeFibonacci) {
+        return orientacionStrategy.formatearSucesionDeFibonacci(longitudDeLaSucesion, sucesionDeFibonacci);
     }
 
 }
