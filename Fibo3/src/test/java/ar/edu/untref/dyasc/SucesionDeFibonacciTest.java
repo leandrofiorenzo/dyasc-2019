@@ -8,7 +8,7 @@ public class SucesionDeFibonacciTest {
     public void testDevuelveLaSucesion5()
     {
         SucesionDeFibonacci sucesionDeFibonacci = new SucesionDeFibonacci();
-        int[] expectedValue = { 0, 1, 1, 2, 3 };
+        int[] expectedValue = { 0, 1, 1, 2 };
         assertArrayEquals(sucesionDeFibonacci.obtenerSucesionDeFibonacci(5), expectedValue);
     }
 
