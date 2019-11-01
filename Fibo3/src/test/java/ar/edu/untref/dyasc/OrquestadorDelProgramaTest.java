@@ -113,7 +113,7 @@ public class OrquestadorDelProgramaTest {
         OrquestadorDelPrograma orquestadorDelPrograma = new OrquestadorDelPrograma(argumentosDelPrograma);
         orquestadorDelPrograma.ejecutarPrograma();
 
-        assertEquals("fibo<6>: 7\n", outContent.toString());
+        assertEquals("fibo<5>: 7\n", outContent.toString());
     }
 
     @Test
